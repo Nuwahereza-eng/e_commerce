@@ -106,7 +106,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   return ProductCard(
                   imageUrl: product['imageUrl'] as String,
                   name: product['name'] as String,
-                  price: product['price'] as double,);
+                  price: product['price'] as double,
+                  background: index.isEven ? Color.fromRGBO(216, 240, 253, 1) : Color.fromRGBO(245, 245, 245, 1),);
                 
                 },
               ),
