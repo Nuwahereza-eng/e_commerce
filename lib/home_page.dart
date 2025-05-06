@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:e_commerce/global_variables.dart';
 import 'package:e_commerce/product_card.dart';
+import 'package:e_commerce/product_details_page.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -38,12 +39,9 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: const Text(
+                  child:  Text(
                     'Shoes\nCollection',
-                    style: TextStyle(
-                      fontSize: 30, 
-                      color: Colors.black, 
-                      fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
                 Expanded(
@@ -103,11 +101,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemCount: products.length, 
                 itemBuilder: (context, index) {
                   final product = products[index];
-                  return ProductCard(
-                  imageUrl: product['imageUrl'] as String,
-                  name: product['name'] as String,
-                  price: product['price'] as double,
-                  background: index.isEven ? Color.fromRGBO(216, 240, 253, 1) : Color.fromRGBO(245, 245, 245, 1),);
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ProductDetailsPage(product: product);
+                          },
+                        ),
+                      );
+
+                    },
+                    child: ProductCard(
+                    imageUrl: product['imageUrl'] as String,
+                    name: product['name'] as String,
+                    price: product['price'] as double,
+                    background: index.isEven ? Color.fromRGBO(216, 240, 253, 1) : Color.fromRGBO(245, 245, 245, 1),),
+                  );
                 
                 },
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:e_commerce/home_page.dart';
-
+import 'package:e_commerce/product_details_page.dart';
+import 'package:e_commerce/global_variables.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Color.fromRGBO(254, 206, 1, 1.0)),
         useMaterial3: true,
         fontFamily: 'Lato',
-      primaryColor: const Color.fromRGBO(254, 206, 1, 1.0),
+      primaryColor: const Color.fromRGBO(254, 206, 1, 1.0), 
       inputDecorationTheme: const InputDecorationTheme(
         hintStyle: TextStyle(
           fontSize: 16,
@@ -25,8 +26,25 @@ class MyApp extends StatelessWidget {
         ),
         prefixIconColor: Color.fromRGBO(119, 119, 119, 1.0),
       ),
+      textTheme: const TextTheme(
+        titleLarge: TextStyle(
+          fontSize: 35, 
+          color: Colors.black, 
+          fontWeight: FontWeight.bold
+
+        )
       ),
-      home: const MyHomePage(),
+      appBarTheme: const AppBarTheme(
+      
+        titleTextStyle: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+      ),
+      
+      ),
+      home:  const MyHomePage(),
     );
   }
 }
