@@ -52,7 +52,7 @@ final cart = [
     'id': 4,
     'name': 'Men\'s Running Shoes',
     'sizes': '8',
-    'image': 'asset/fonts/images/shoe4.png',
+    'imageUrl': 'asset/fonts/images/shoe4.png',
     'price': 49.99,
     'company': 'Reebok',
     

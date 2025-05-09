@@ -32,7 +32,11 @@ late String selectedSize;
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Image.asset('asset/fonts/images/shoe1.png'),
+              child: Image.asset('${widget.product['imageUrl'] }',
+                fit: BoxFit.cover,
+                width: double.infinity,
+                
+              ),
             ),
             const SizedBox(height: 16),
              Text(
