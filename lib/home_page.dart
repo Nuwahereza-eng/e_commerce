@@ -1,6 +1,7 @@
 
 import 'package:e_commerce/product_list.dart';
 import 'package:flutter/material.dart';
+import 'package:e_commerce/product_cart_page.dart';
 
 
 
@@ -22,14 +23,25 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   
   late int currentPage = 0;
-
+List<Widget> pages = [
+  ProductList(),
+  ProductCartPage(),
+];
   
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ProductList() ,
+      body: IndexedStack(
+        index: currentPage,
+        children: pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
+        iconSize: 30,
+        selectedItemColor: const Color.fromRGBO(254, 206, 1, 1.0),
+        selectedFontSize: 0,
+        unselectedFontSize: 0,
+        backgroundColor: const Color.fromRGBO(238, 238, 238, 1.0),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -37,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.shopping_cart, ),
             label: '',
           ),
         ],
