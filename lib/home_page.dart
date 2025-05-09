@@ -22,6 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'Converse',
   ];
   late String selectedFilter;
+  late int currentPage = 0;
 
   @override
   void initState() {
@@ -123,8 +124,30 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
             ),  
+            BottomNavigationBar(
+              currentIndex: currentPage,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: '',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.shopping_cart),
+                  label: '',
+                ),
+                
+              ],
+              selectedItemColor: Theme.of(context).primaryColor,
+              onTap: (index) {
+
+                setState(() {
+                  currentPage = index;
+                });
+              },
+            ),
           ],
         ),
+      
       ),
     );
   }
