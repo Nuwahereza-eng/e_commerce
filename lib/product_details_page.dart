@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:e_commerce/cart_provider.dart';
 
 class ProductDetailsPage extends StatefulWidget {
 final Map<String, Object> product;
@@ -10,13 +12,13 @@ final Map<String, Object> product;
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
-late String selectedSize;
+late int selectedSize=0;
 
 
 @override
   void initState() {
     super.initState();
-    selectedSize = (widget.product['sizes'] as List)[0] as String;
+    selectedSize = (widget.product['sizes'] as List)[0] as int;
   }
   
   @override
@@ -61,25 +63,49 @@ late String selectedSize;
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          selectedSize = (widget.product['sizes'] as List)[index] as String;
+                          selectedSize = (widget.product['sizes'] as List)[index] as int;
                         });
                       },
                       child: Chip(label: 
                       Text(
-                        (widget.product['sizes'] as List)[index] as String,
+                        '${(widget.product['sizes'] as List)[index] as int}',
                         style: const TextStyle(fontSize: 16),
                       ),
-                      backgroundColor: selectedSize == (widget.product['sizes'] as List)[index] as String
+                      backgroundColor: selectedSize == (widget.product['sizes'] as List)[index] as int
                           ? const Color.fromRGBO(254, 206, 1, 1.0)
                           : Colors.grey[300],
                     ),
-                  ),);
-               } , 
+                  ),
+                );
+              },
                 ),
              ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
+                if (selectedSize != 0) {
+                  Provider.of<CartProvider>(context, listen: false).addItem(
+                    {
+                      'imageUrl': widget.product['imageUrl'],
+                      'name': widget.product['name'],
+                      'price': widget.product['price'],
+                      'size': selectedSize,
+                    },
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please select a size'),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                }
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Product added to cart'),
+                    duration: Duration(seconds: 2),
+                  ),
+                );
                 // Add to cart action
               },
               style: ElevatedButton.styleFrom(
