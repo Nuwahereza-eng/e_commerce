@@ -20,6 +20,7 @@ class ProductCartPage extends StatelessWidget {
               child: Text('Your cart is empty'),
             );
           }
+
           final cartItem = cart[index];
           return ListTile(
             leading: Image.asset(cartItem['imageUrl'] as String, width: 50),
@@ -33,14 +34,36 @@ class ProductCartPage extends StatelessWidget {
             trailing: IconButton(
               icon: const Icon(Icons.delete, color: Colors.red),
               onPressed: () {
-                cart.removeAt(index);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: const Text('Product removed from cart'),
-                    duration: const Duration(seconds: 2),
-                  ),
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text('Remove Product'),
+                      content: const Text('Are you sure you want to remove this product from your cart?'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            cart.remove(cartItem);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: const Text('Product removed from cart'),
+                                duration: const Duration(seconds: 2),
+                              ),
+                            );
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text('Yes', style: TextStyle(color: Colors.red)),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text('No', style: TextStyle(color: Colors.blue)),
+                        ),
+                      ],
+                    );
+                  },
                 );
-                (context as Element).reassemble();
               },
             ),
           );

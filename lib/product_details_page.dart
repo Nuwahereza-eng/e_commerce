@@ -111,7 +111,7 @@ late int selectedSize=0;
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.black,
                 backgroundColor:  const Color.fromRGBO(254, 206, 1, 1.0),
-                maximumSize: const Size(double.infinity, 50),
+                fixedSize: const Size(350, 50),
                 ),
               child: const Text('Add to Cart'),
             ),
