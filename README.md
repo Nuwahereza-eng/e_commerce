@@ -14,6 +14,7 @@ An elegant and modern e-commerce app built with Flutter. This app showcases a co
 
 ![Home Page](asset/screenshots/home_page.png)
 ![Product Card](asset/screenshots/product_details.png)
+![Phone Display](asset/screenshots/phone_display.png)
 
 ## Project Structure
 
