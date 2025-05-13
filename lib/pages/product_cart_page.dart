@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:e_commerce/cart_provider.dart';
+import 'package:e_commerce/providers/cart_provider.dart';
 
 class ProductCartPage extends StatelessWidget {
   const ProductCartPage({super.key});

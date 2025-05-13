@@ -1,7 +1,7 @@
 
-import 'package:e_commerce/product_list.dart';
+import 'package:e_commerce/pages/product_list.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce/product_cart_page.dart';
+import 'package:e_commerce/pages/product_cart_page.dart';
 
 
 
