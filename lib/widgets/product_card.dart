@@ -26,11 +26,9 @@ class ProductCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Image(image: AssetImage(imageUrl)
-            ,
-            fit: BoxFit.cover,
+          Image(image: AssetImage(imageUrl),
             width: 175,
-          
+            fit: BoxFit.cover,
           ),
           const SizedBox(height: 8),
           Text(
